@@ -17,6 +17,7 @@ CloudLiu.prototype.doQuery = function() {
       keyStrokes: this.keyStrokes
     }, function(data, textStatus) {
       liu.candidates = data.candidates;
+      liu.updateCandidates();
       console.log(data.candidates);
     });
   } else {
@@ -80,8 +81,6 @@ CloudLiu.prototype.handle_Enter = function() {
 
 CloudLiu.prototype.updateUI = function() {
   this.updatePreEdit();
-  this.updateCandidates();
-
 }
 
 CloudLiu.prototype.updatePreEdit = function() {
