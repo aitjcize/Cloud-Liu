@@ -6,19 +6,25 @@ function CloudLiu(el) {
   this.ui = $('.cloud-liu-outer');
   this.ui.preedit = $('.cloud-liu-preedit')
   this.ui.candidates = $('.cloud-liu-candidates')
-
   this.ui.draggable();
+  this.pxhr = undefined;
 }
 
 CloudLiu.prototype.doQuery = function() {
   var liu = this;
   if (this.keyStrokes.length) {
-    $.post('/query.json', {
-      keyStrokes: this.keyStrokes
-    }, function(data, textStatus) {
-      liu.candidates = data.candidates;
-      liu.updateCandidates();
-      console.log(data.candidates);
+    if (typeof this.pxhr != "undefined" && this.pxhr.readyState != 4) {
+      this.pxhr.abort();
+    }
+    this.pxhr = $.ajax({
+      type: "POST",
+      url: '/query.json',
+      data: { keyStrokes: this.keyStrokes },
+      success: function(data, textStatus) {
+        liu.candidates = data.candidates;
+        liu.updateCandidates();
+        console.log(data.candidates);
+      }
     });
   } else {
     liu.candidates = [];
