@@ -48,7 +48,8 @@ CloudLiu.prototype.handle_Backspace = function () {
   if (this.keyStrokes.length) {
     this.keyStrokes.pop();
     this.doQuery();
-    this.updateUI();
+    this.updatePreEdit();
+    this.updateCandidates();
     return true;
   }
   return false;
@@ -58,7 +59,7 @@ CloudLiu.prototype.handle_Default = function (key) {
   if (this.keyStrokes.length < 5) {
     this.keyStrokes.push(key);
     this.doQuery();
-    this.updateUI();
+    this.updatePreEdit();
     console.log(this.keyStrokes);
   }
 }
@@ -68,7 +69,8 @@ CloudLiu.prototype.handle_Space = function () {
   this.el.textrange('setcursor', this.el.textrange('get').end);
   this.keyStrokes = [];
   this.candidates = [];
-  this.updateUI();
+  this.updatePreEdit();
+  this.updateCandidates();
 }
 
 CloudLiu.prototype.handle_Enter = function() {
@@ -77,10 +79,6 @@ CloudLiu.prototype.handle_Enter = function() {
     return true;
   }
   return false;
-}
-
-CloudLiu.prototype.updateUI = function() {
-  this.updatePreEdit();
 }
 
 CloudLiu.prototype.updatePreEdit = function() {
