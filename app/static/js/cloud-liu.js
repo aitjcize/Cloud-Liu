@@ -1,17 +1,3 @@
-function LoadDB() {
-  window.db == undefined;
-  var $disp = $('.cloud-liu-candidates');
-  $disp.text("載入中 ...");
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', '/static/boshiamy.db', true);
-  xhr.responseType = 'arraybuffer';
-  xhr.onload = function (e) {
-    window.db = SQL.open(new Int8Array(this.response));
-    $disp.text("");
-  }
-  xhr.send();
-}
-
 function CloudLiu(el) {
   this.el = el;
   this.active = true;
@@ -175,6 +161,4 @@ $(document).ready(function() {
       e.preventDefault();
     }
   });
-
-  LoadDB();
 });
