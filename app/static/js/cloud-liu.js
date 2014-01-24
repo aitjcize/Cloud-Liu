@@ -1,3 +1,17 @@
+function LoadDB() {
+  window.db == undefined;
+  var $disp = $('.cloud-liu-candidates');
+  $disp.text("載入中 ...");
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', '/static/boshiamy.db', true);
+  xhr.responseType = 'arraybuffer';
+  xhr.onload = function (e) {
+    window.db = SQL.open(new Int8Array(this.response));
+    $disp.text("");
+  }
+  xhr.send();
+}
+
 function CloudLiu(el) {
   this.el = el;
   this.active = true;
@@ -10,9 +24,14 @@ function CloudLiu(el) {
   this.pxhr = undefined;
 }
 
-CloudLiu.prototype.doQuery = function() {
-  var liu = this;
-  if (this.keyStrokes.length) {
+CloudLiu.prototype.doQuery = function(remote) {
+  if (this.keyStrokes.length == 0) {
+    this.candidates = [];
+    return;
+  }
+
+  if (remote) {
+    var liu = this;
     if (typeof this.pxhr != "undefined" && this.pxhr.readyState != 4) {
       this.pxhr.abort();
     }
@@ -23,11 +42,43 @@ CloudLiu.prototype.doQuery = function() {
       success: function(data, textStatus) {
         liu.candidates = data.candidates;
         liu.updateCandidates();
-        console.log(data.candidates);
+        //console.log(data.candidates);
       }
     });
   } else {
-    liu.candidates = [];
+    var query_str = "SELECT phrase FROM phrases WHERE ";
+    for (var i = 0; i < 5; ++i) {
+      if (i >= this.keyStrokes.length)
+        break;
+      var alpha = "";
+      switch(this.keyStrokes[i]) {
+      case 190:
+        alpha = "56";
+        break;
+      case 188:
+        alpha = "55";
+        break;
+      case 222:
+        alpha = "27";
+        break;
+      case 219:
+        alpha = "45";
+        break;
+      case 221:
+        alpha = "46";
+        break;
+      default:
+        alpha = this.keyStrokes[i] - 65 + 1;
+      }
+      query_str += 'm' + i + '=' + alpha + ' AND ';
+    }
+
+    query_str = query_str.replace(/ AND $/, '');
+    query_str += " ORDER BY -freq LIMIT 10;";
+    this.candidates = db.exec(query_str).map(function(v) {
+      return v[0].value;
+    });
+    this.updateCandidates();
   }
 }
 
@@ -66,7 +117,7 @@ CloudLiu.prototype.handle_Default = function (key) {
     this.keyStrokes.push(key);
     this.doQuery();
     this.updatePreEdit();
-    console.log(this.keyStrokes);
+    //console.log(this.keyStrokes);
   }
 }
 
@@ -124,4 +175,6 @@ $(document).ready(function() {
       e.preventDefault();
     }
   });
+
+  LoadDB();
 });

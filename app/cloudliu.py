@@ -38,6 +38,7 @@ def query():
     conn = sqlite3.connect(database)
     cursor = conn.cursor()
     result = cursor.execute(query_str).fetchall()
+    print query_str
 
     return jsonify({'candidates': [r[0] for r in result]})
 
