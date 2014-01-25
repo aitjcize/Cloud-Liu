@@ -1,9 +1,20 @@
 var host = '__HOST__';
 
 function CloudLiu_UI_init() {
-  var ui = $('<div class="cloud-liu-outer"><div class="cloud-liu-preedit"></div><div class="cloud-liu-candidates">載入中 ...</div></div>');
-  $('body').append(ui);
+  window.cliu_enabled = true;
+
+  var ui = $('<div class="cloud-liu-outer"><div class="cloud-liu-logo">嘸</div><div class="cloud-liu-preedit"></div><div class="cloud-liu-candidates">載入中 ...</div></div>');
   ui.draggable();
+  $('body').append(ui);
+  var tog_el = $('.cloud-liu-logo');
+  tog_el.click(function() {
+    if (window.cliu_enabled) {
+      tog_el.text('Ａ');
+    } else {
+      tog_el.text('嘸');
+    }
+    window.cliu_enabled = !window.cliu_enabled;
+  });
 }
 
 function CloudLiu_Core_init() {
@@ -23,29 +34,45 @@ requirejs.config({
   waitSeconds: 120
 });
 
-require([
-    'jquery-1.10.2.min',
-    'jquery-ui-1.10.4.custom.min',
-    'jquery-textrange.min'
+require(['jquery-1.10.2.min'], function() {
+  console.log('Cloud Liu: loading library ...');
+  require([
+    'jquery-textrange.min',
+    'jquery-ui-1.10.4.custom.min'
   ], function() {
-  console.log('Cloud Liu loaindg phase 1 ...');
-  CloudLiu_UI_init();
+    CloudLiu_UI_init();
+  });
 
+  console.log('Cloud Liu: loading database ...');
   require([
     'sql.min',
     'boshiamy.db'
     ], function() {
-    console.log('Cloud Liu loaindg phase 2 ...');
     require(['cloud-liu.min'], function() {
       CloudLiu_Core_init();
-      console.log('Cloud Liu loaded');
+      console.log('Cloud Liu: loaded');
 
-      $('textarea').each(function(idx, el) {
-        new CloudLiu(el);
+      var watching = {};
+      var MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+      var observer = new MutationObserver(function(mutations, observer) {
+        $('textarea').each(function(idx, el) {
+          if (typeof el.attributes.cliu == "undefined") {
+            el.setAttribute('cliu', true);
+            new CloudLiu(el);
+          }
+        });
+
+        $('input[type="text"]').each(function(idx, el) {
+          if (typeof el.attributes.cliu == "undefined") {
+            el.setAttribute('cliu', true);
+            new CloudLiu(el);
+          }
+        });
       });
 
-      $('input[type="text"]').each(function(idx, el) {
-        new CloudLiu(el);
+      observer.observe(document, {
+        subtree: true,
+        attributes: true
       });
     });
   });

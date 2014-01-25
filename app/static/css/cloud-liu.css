@@ -1,16 +1,27 @@
 .cloud-liu-outer {
+  z-index: 9999;
   position: fixed !important;
   display: block;
   height: 26px;
-  max-width: 240px;
+  max-width: 270px;
   top: 90%;
   left: 10%;
-  border: #7f7f7f 1px solid;
-  background-color: rgb(192, 225, 255);
+  border: #777777 2px solid;
+  background-color: rgba(202, 202, 202, 0.95);
 
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+}
+
+.cloud-liu-logo {
+  display: inline-block;
+  float: left;
+  width: 20px;
+  height: 20px;
+  margin: 3px 3px;
+  border-right: #777777 2px solid;
+  font-size: medium !important;
 }
 
 .cloud-liu-preedit {
@@ -20,7 +31,8 @@
   height: 20px;
   margin: 3px 3px;
   color: black;
-  border-right: 1px solid;
+  border-right: #777777 2px solid;
+  font-size: medium !important;
 }
 
 .cloud-liu-candidates {
@@ -28,8 +40,10 @@
   float: left;
   height: 20px;
   margin: 3px 3px;
+  font-size: medium !important;
 }
 
 .cloud-liu-candidate {
   display: inline-block;
+  font-size: medium !important;
 }

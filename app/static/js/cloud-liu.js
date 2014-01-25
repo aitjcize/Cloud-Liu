@@ -10,11 +10,13 @@ function CloudLiu(el) {
 
   var liu = this;
   this.el.keydown(function(e) {
-    if (e.ctrlKey) {
-      return;
-    }
-    if (liu.handle_Key(e.keyCode)) {
-      e.preventDefault();
+    if (window.cliu_enabled) {
+      if (e.ctrlKey) {
+        return;
+      }
+      if (liu.handle_Key(e.keyCode)) {
+        e.preventDefault();
+      }
     }
   });
 }
