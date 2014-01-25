@@ -9,8 +9,7 @@ dist-copy:
 	mkdir dist
 	cp -r $(ROOT)/static dist
 	cd dist/static/js; \
-	sed -i "s+__HOST__+$(HOST)+g" cloud-liu-loader.js bookmarklet.js; \
-	cat cliu-loader.pre.js require.js cloud-liu-loader.js cliu-loader.post.js > cliu-loader.js;
+	sed -i "s+__HOST__+$(HOST)+g" cloud-liu-loader.js bookmarklet.js;
 	cd dist/static/css; \
 	sed -i "s+__HOST__+$(HOST)+g" cloud-liu.css
 
@@ -21,5 +20,9 @@ dist-uglify: dist-copy
 	  rm $$i; \
 	done
 
-dist: dist-uglify
+dist-combine: dist-uglify
+	cd dist/static/js; \
+	cat cliu-loader.pre.js require.js cloud-liu-loader.min.js cliu-loader.post.js > cliu-loader.js;
+
+dist: dist-combine
 	echo 'done'

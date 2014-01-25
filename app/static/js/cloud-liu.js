@@ -9,6 +9,7 @@ function CloudLiu(el) {
   this.pxhr = undefined;
 
   var liu = this;
+
   this.el.keydown(function(e) {
     if (window.cliu_enabled) {
       if (e.ctrlKey) {

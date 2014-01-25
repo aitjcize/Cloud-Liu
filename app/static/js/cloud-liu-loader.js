@@ -6,14 +6,17 @@ function CloudLiu_UI_init() {
   var ui = $('<div class="cloud-liu-outer"><div class="cloud-liu-logo">嘸</div><div class="cloud-liu-preedit"></div><div class="cloud-liu-candidates">載入中 ...</div></div>');
   ui.draggable();
   $('body').append(ui);
+  $(':focus').blur();
+
   var tog_el = $('.cloud-liu-logo');
   tog_el.click(function() {
     if (window.cliu_enabled) {
       tog_el.text('Ａ');
+      window.cliu_enabled = false;
     } else {
       tog_el.text('嘸');
+      window.cliu_enabled = true;
     }
-    window.cliu_enabled = !window.cliu_enabled;
   });
 }
 
@@ -27,6 +30,22 @@ function CloudLiu_Core_init() {
   }
   window.db = SQL.open(array);
   $disp.text("等待輸入");
+}
+
+function CloudLiu_Core_register() {
+  $('textarea').each(function(idx, el) {
+    if (typeof el.attributes.cliu == "undefined") {
+      el.setAttribute('cliu', true);
+      new CloudLiu(el);
+    }
+  });
+
+  $('input[type="text"]').each(function(idx, el) {
+    if (typeof el.attributes.cliu == "undefined") {
+      el.setAttribute('cliu', true);
+      new CloudLiu(el);
+    }
+  });
 }
 
 requirejs.config({
@@ -55,25 +74,15 @@ require(['jquery-1.10.2.min'], function() {
       var watching = {};
       var MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
       var observer = new MutationObserver(function(mutations, observer) {
-        $('textarea').each(function(idx, el) {
-          if (typeof el.attributes.cliu == "undefined") {
-            el.setAttribute('cliu', true);
-            new CloudLiu(el);
-          }
-        });
-
-        $('input[type="text"]').each(function(idx, el) {
-          if (typeof el.attributes.cliu == "undefined") {
-            el.setAttribute('cliu', true);
-            new CloudLiu(el);
-          }
-        });
+        CloudLiu_Core_register();
       });
 
       observer.observe(document, {
         subtree: true,
         attributes: true
       });
+
+      CloudLiu_Core_register();
     });
   });
 });
