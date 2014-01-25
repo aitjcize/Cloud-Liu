@@ -1,8 +1,8 @@
-function createUI() {
-  $('body').append($('<div class="cloud-liu-outer"><div class="cloud-liu-preedit"></div><div class="cloud-liu-candidates"></div></div>'));
-}
+(function createUI() {
+  var ui = $('<div class="cloud-liu-outer"><div class="cloud-liu-preedit"></div><div class="cloud-liu-candidates"></div></div>');
+  ui.draggable();
+  $('body').append(ui);
 
-function LoadDB() {
   window.db == undefined;
   var $disp = $('.cloud-liu-candidates');
   $disp.text("載入中 ...");
@@ -13,8 +13,4 @@ function LoadDB() {
   }
   window.db = SQL.open(array);
   $disp.text("等待輸入");
-}
-
-createUI();
-LoadDB();
-
+})();
