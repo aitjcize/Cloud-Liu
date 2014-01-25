@@ -7,7 +7,8 @@ dist-copy:
 	mkdir dist
 	cp -r $(ROOT)/static dist
 	cd dist/static/js; \
-	sed -i "s+__HOST__+$(HOST)+g" cloud-liu-loader.js bookmarklet.js
+	sed -i "s+__HOST__+$(HOST)+g" cloud-liu-loader.js bookmarklet.js; \
+	cat require.js cloud-liu-loader.js > cliu-loader.js
 
 dist-uglify: dist-copy
 	cd dist/static/js; \
