@@ -1,3 +1,4 @@
 python
 .*.swp
 *.pyc
+dist
