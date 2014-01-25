@@ -4,6 +4,7 @@ function CloudLiu(el) {
   this.candidates = Array();
   this.keyStrokes = Array();
   this.ui = $('.cloud-liu-outer');
+  this.ui.tog_el = $('.cloud-liu-logo');
   this.ui.preedit = $('.cloud-liu-preedit')
   this.ui.candidates = $('.cloud-liu-candidates')
   this.pxhr = undefined;
@@ -11,6 +12,12 @@ function CloudLiu(el) {
   var liu = this;
 
   this.el.keydown(function(e) {
+    if (e.ctrlKey && e.shiftKey) {
+      liu.ui.tog_el.click();
+      e.preventDefault();
+      return;
+    }
+
     if (window.cliu_enabled) {
       if (e.ctrlKey) {
         return;
