@@ -6,14 +6,13 @@ function LoadDB() {
   window.db == undefined;
   var $disp = $('.cloud-liu-candidates');
   $disp.text("載入中 ...");
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', '/static/boshiamy.db', true);
-  xhr.responseType = 'arraybuffer';
-  xhr.onload = function (e) {
-    window.db = SQL.open(new Int8Array(this.response));
-    $disp.text("");
+  var raw = atob(db_data.value);
+  var array = new Int8Array(raw.length);
+  for (var i = 0; i < raw.length; ++i) {
+    array[i] = raw.charCodeAt(i);
   }
-  xhr.send();
+  window.db = SQL.open(array);
+  $disp.text("等待輸入");
 }
 
 createUI();
