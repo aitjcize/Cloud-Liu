@@ -2,3 +2,4 @@ python
 .*.swp
 *.pyc
 dist
+app/static
