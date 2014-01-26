@@ -111,12 +111,14 @@ CloudLiu.prototype.handle_Default = function (key) {
 }
 
 CloudLiu.prototype.handle_Space = function () {
-  this.el.textrange('replace', this.candidates[0]);
-  this.el.textrange('setcursor', this.el.textrange('get').end);
-  this.keyStrokes = [];
-  this.candidates = [];
-  this.updatePreEdit();
-  this.updateCandidates();
+  if (this.candidates.length) {
+    this.el.textrange('replace', this.candidates[0]);
+    this.el.textrange('setcursor', this.el.textrange('get').end);
+    this.keyStrokes = [];
+    this.candidates = [];
+    this.updatePreEdit();
+    this.updateCandidates();
+  }
 }
 
 CloudLiu.prototype.handle_Enter = function() {
