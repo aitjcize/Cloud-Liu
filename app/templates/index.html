@@ -4,6 +4,10 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <title>雲蝦米 alpha</title>
 
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/static/css/bootstrap-theme.min.css" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+
   <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -14,21 +18,74 @@
   </script>
 </head>
 <body>
-  <h1>雲蝦米 alpha</h1>
-  <p>不用安裝就可以使用的嘸蝦米輸入法!</p>
-  <h2>作者</h2>
-  <p><a href="http://azhuang.me">AZ Huang</a></p>
-  <h2>安裝</h2>
-  <p>請把這個連結拖到書籤列:</p>
-  <a href='javascript:(function load() {var host="{{ host }}";var s1=document.createElement("script");var c1=document.createElement("link");s1.setAttribute("src",host+"/static/js/cliu-loader.min.js");c1.setAttribute("href",host+"/static/css/cloud-liu.css");c1.setAttribute("rel","stylesheet");document.body.appendChild(s1);document.head.appendChild(c1);})();'>雲蝦米</a>
+  <a href="https://github.com/aitjcize/Cloud-Liu">
+    <img style="position: fixed; top: 0; left: 0; border: 0; z-index: 9999;"
+    src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"
+    alt="Fork me on GitHub">
+  </a>
+  
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+  </script>
 
-  <h2>使用方式</h2>
-  <ul>
-    <li>第一次載入的時候會很慢，因為有8MB的資料要下載。不過接下來因為browser會有快取所以就會快很多了!</li>
-    <li>在任何一個頁面按下那個書籤就會載入雲蝦米，載入成功後會出現"等待輸入"字樣，接著就可以開始輸入了。</li>
-    <li>按下"嘸"字或是 Ctrl + Shift 可以切換英文輸入</li>
-  </ul>
-  <h2>測試區</h2>
-  <textarea name="name" rows="8" cols="40"></textarea>
+  <div class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+      <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+        <a class="navbar-brand" href="#">雲蝦米</a>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="#installation">安裝</a></li>
+          <li><a href="#usage">使用說明</a></li>
+          <li><a href="#author">作者</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>雲蝦米 alpha
+      <div class="fb-like" data-href="http://cloud-liu.herokuapp.com/"
+        data-layout="standard" data-action="like" data-show-faces="false"
+        data-share="true"></div></h1>
+    <p>不用安裝就可以使用的嘸蝦米輸入法!</p>
+    <h2 id="installation">安裝</h2>
+    <ol>
+      <li>
+        <p>桌面: 請把這個連結拖到書籤列: <a href='javascript:(function load() {var host="{{ host }}";var s1=document.createElement("script");var c1=document.createElement("link");s1.setAttribute("src",host+"/static/js/cliu-loader.min.js");c1.setAttribute("href",host+"/static/css/cloud-liu.css");c1.setAttribute("rel","stylesheet");document.body.appendChild(s1);document.head.appendChild(c1);})();'>雲蝦米</a></p>
+      </li>
+      <li>
+        <p>iPad Safari/手機: 複製下面的程式碼貼到書籤或網址列<br />
+        <textarea rows="6" cols="80" readonly>javascript:(function load() {var host="{{ host }}";var s1=document.createElement("script");var c1=document.createElement("link");s1.setAttribute("src",host+"/static/js/cliu-loader.min.js");c1.setAttribute("href",host+"/static/css/cloud-liu.css");c1.setAttribute("rel","stylesheet");document.body.appendChild(s1);document.head.appendChild(c1);})();</textarea>
+        </p>
+      </li>
+    </ol>
+
+    <h2 id="usage">使用說明</h2>
+    <ul>
+      <li>第一次載入的時候會很慢，因為有8MB的資料要下載。不過接下來因為browser會有快取所以就會快很多了!</li>
+      <li>在任何一個頁面按下那個書籤就會載入雲蝦米，載入成功後會出現"等待輸入"字樣，接著就可以開始輸入了。</li>
+      <li>按下"嘸"字或是 Ctrl + Shift 可以切換英文輸入</li>
+    </ul>
+    <h2>測試區</h2>
+    <textarea name="name" rows="10" cols="80"></textarea>
+
+    <h2 id="author">作者</h2>
+    <p><a href="http://azhuang.me">Wei-Ning Huang (AZ)</a></p>
+  </div>
+
+  <script type="text/javascript" src="/static/js/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
 </body>
 </html>
