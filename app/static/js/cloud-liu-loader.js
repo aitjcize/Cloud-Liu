@@ -28,6 +28,10 @@ function CloudLiu_Core_init() {
     array[i] = raw.charCodeAt(i);
   }
   window.db = SQL.open(array);
+
+  // Strange hack to kick-start Chrome V8's JIT
+  db.exec("SELECT phrase FROM phrases WHERE m0=9 ORDER BY -freq LIMIT 1;");
+
   array = undefined;
   $disp.text("等待輸入");
 }

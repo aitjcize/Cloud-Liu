@@ -37,8 +37,6 @@ CloudLiu.prototype.doQuery = function() {
 
   var query_str = "SELECT phrase FROM phrases WHERE ";
   for (var i = 0; i < 5; ++i) {
-    if (i >= this.keyStrokes.length)
-      break;
     var alpha = "";
     switch(this.keyStrokes[i]) {
     case 190:
@@ -59,10 +57,14 @@ CloudLiu.prototype.doQuery = function() {
     default:
       alpha = this.keyStrokes[i] - 65 + 1;
     }
-    query_str += 'm' + i + '=' + alpha + ' AND ';
-  }
 
-  query_str = query_str.replace(/ AND $/, '');
+    if (i < this.keyStrokes.length - 1) {
+      query_str += ["m", i, "=", alpha, " AND "].join("");
+    } else {
+      query_str += ["m", i, "=", alpha].join('');
+      break;
+    }
+  }
   query_str += " ORDER BY -freq LIMIT 10;";
 
   this.candidates = db.exec(query_str).map(function(v) { return v[0].value; });
