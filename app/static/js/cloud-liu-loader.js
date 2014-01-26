@@ -75,6 +75,7 @@ require(['jquery-1.10.2.min'], function() {
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','cga');
   cga('create', 'UA-47158795-2', document.domain);
+  cga('send', 'pageview', '/active');
   cga('send', 'event', 'launch', document.URL);
 
   console.log('Cloud Liu: loading library ...');
