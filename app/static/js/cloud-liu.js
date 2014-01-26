@@ -1,16 +1,13 @@
 function CloudLiu(el) {
   this.el = $(el);
-  this.active = true;
   this.candidates = Array();
   this.keyStrokes = Array();
   this.ui = $('.cloud-liu-outer');
   this.ui.tog_el = $('.cloud-liu-logo');
   this.ui.preedit = $('.cloud-liu-preedit')
   this.ui.candidates = $('.cloud-liu-candidates')
-  this.pxhr = undefined;
 
   var liu = this;
-
   this.el.keydown(function(e) {
     if (e.ctrlKey && e.shiftKey) {
       liu.ui.tog_el.click();
@@ -61,7 +58,7 @@ CloudLiu.prototype.doQuery = function() {
     if (i < this.keyStrokes.length - 1) {
       query_str += ["m", i, "=", alpha, " AND "].join("");
     } else {
-      query_str += ["m", i, "=", alpha].join('');
+      query_str += ["m", i, "=", alpha].join("");
       break;
     }
   }
