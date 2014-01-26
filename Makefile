@@ -29,7 +29,7 @@ dist-uglify: dist-copy
 
 dist-combine: dist-uglify
 	cd dist/static/js; \
-	cat cliu-loader.pre.js require.js cloud-liu-loader.min.js cliu-loader.post.js > cliu-loader.js;
+	cat cliu-loader.pre.js require.js cloud-liu-loader.min.js cliu-loader.post.js > cliu-loader.min.js;
 
 dist: dist-combine
 	echo 'done'
