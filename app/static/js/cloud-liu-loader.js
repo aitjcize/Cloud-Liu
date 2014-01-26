@@ -50,6 +50,13 @@ function CloudLiu_Core_register() {
       new CloudLiu(el);
     }
   });
+
+  $('input[type="search"]').each(function(idx, el) {
+    if (typeof el.attributes.cliu == "undefined") {
+      el.setAttribute('cliu', true);
+      new CloudLiu(el);
+    }
+  });
 }
 
 requirejs.config({
