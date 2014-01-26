@@ -4,16 +4,12 @@ JS = bookmarklet.js cloud-liu.js cloud-liu-loader.js
 all: dev
 
 dev:
-	rm -rf app/static
-	cp -r static app
 	cd app/static/js; \
-	sed -i "s+__HOST__+http://localhost:5000+g" cloud-liu-loader.js bookmarklet.js; \
 	for i in $(JS); do \
-	  mv $$i $${i/.js/.min.js}; \
+	  cp $$i $${i/.js/.min.js}; \
+		sed -i "s+__HOST__+http://localhost:5000+g" $${i/.js/.min.js}; \
 	done; \
 	cat cliu-loader.pre.js require.js cloud-liu-loader.min.js cliu-loader.post.js > cliu-loader.js;
-	cd app/static/css; \
-	sed -i "s+__HOST__+http://localhost:5000+g" cloud-liu.css
 
 dist-copy:
 	rm -rf dist
