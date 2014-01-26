@@ -38,3 +38,14 @@ textarea {
   height: 210px;
   margin-bottom: 10px;
 }
+
+.donate-paypal {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.donate-bitcoin {
+  display: inline-block;
+  position: relative;
+  bottom: 30px;
+}
