@@ -75,8 +75,7 @@ CloudLiu.prototype.handle_Key = function(key) {
   case 13:
     return this.handle_Enter();
   case 32:
-    this.handle_Space();
-    return true;
+    return this.handle_Space();
   default:
     if ((key >= 65 && key <= 90) || key == 190 || key == 188
         || key == 222 || key == 219 || key == 221) {
@@ -115,15 +114,14 @@ CloudLiu.prototype.handle_Space = function () {
     this.candidates = [];
     this.updatePreEdit();
     this.updateCandidates();
+    return true;
+  } else {
+    return false;
   }
 }
 
 CloudLiu.prototype.handle_Enter = function() {
-  if (this.keyStrokes.length) {
-    this.handle_Space();
-    return true;
-  }
-  return false;
+  return this.handle_Space();
 }
 
 CloudLiu.prototype.updatePreEdit = function() {

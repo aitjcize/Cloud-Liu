@@ -6,7 +6,6 @@ function CloudLiu_UI_init() {
   var ui = $('<div class="cloud-liu-outer"><div class="cloud-liu-logo">嘸</div><div class="cloud-liu-preedit"></div><div class="cloud-liu-candidates">載入中 ...</div></div>');
   ui.draggable();
   $('body').append(ui);
-  $(':focus').blur();
 
   var tog_el = $('.cloud-liu-logo');
   tog_el.click(function() {
