@@ -25,7 +25,7 @@
   height: 20px;
   margin: 0px 3px;
   border-right: #777777 2px solid;
-  font-size: medium !important;
+  font-size: 1em !important;
 }
 
 .cloud-liu-preedit {
@@ -35,7 +35,7 @@
   height: 20px;
   color: black;
   border-right: #777777 2px solid;
-  font-size: medium !important;
+  font-size: 1em !important;
 }
 
 .cloud-liu-candidates {
@@ -43,11 +43,11 @@
   float: left;
   height: 20px;
   margin: 0px 3px;
-  font-size: medium !important;
+  font-size: 1em !important;
 }
 
 .cloud-liu-candidate {
   height: 20px;
   display: inline-block;
-  font-size: medium !important;
+  font-size: 1em !important;
 }
