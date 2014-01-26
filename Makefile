@@ -6,15 +6,15 @@ all: dev
 dev:
 	cd app/static/js; \
 	for i in $(JS); do \
-	  cp $$i $${i/.js/.min.js}; \
+		cp -f $$i $${i/.js/.min.js}; \
 		sed -i "s+__HOST__+http://localhost:5000+g" $${i/.js/.min.js}; \
 	done; \
-	cat cliu-loader.pre.js require.js cloud-liu-loader.min.js cliu-loader.post.js > cliu-loader.js;
+	cat cliu-loader.pre.js require.js cloud-liu-loader.min.js cliu-loader.post.js > cliu-loader.min.js;
 
 dist-copy:
 	rm -rf dist
 	mkdir dist
-	cp -r static dist
+	cp -r app/static dist
 	cd dist/static/js; \
 	sed -i "s+__HOST__+$(HOST)+g" cloud-liu-loader.js bookmarklet.js;
 	cd dist/static/css; \
@@ -23,8 +23,8 @@ dist-copy:
 dist-uglify: dist-copy
 	cd dist/static/js; \
 	for i in $(JS); do \
-	  uglifyjs $$i > $${i/.js/.min.js}; \
-	  rm $$i; \
+		uglifyjs $$i > $${i/.js/.min.js}; \
+		rm $$i; \
 	done
 
 dist-combine: dist-uglify

@@ -29,6 +29,8 @@ function CloudLiu_Core_init() {
     array[i] = raw.charCodeAt(i);
   }
   window.db = SQL.open(array);
+  var query_str = "SELECT phrase FROM phrases WHERE m0=9 AND m1=24 ORDER BY -freq LIMIT 10;";
+  array = undefined;
   $disp.text("等待輸入");
 }
 
