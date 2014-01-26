@@ -58,6 +58,11 @@ requirejs.config({
 });
 
 require(['jquery-1.10.2.min'], function() {
+  if (typeof window.cliu_enabled != "undefined") {
+    console.log('Cloud Liu: Areadly loaded, abort.');
+    return;
+  }
+
   console.log('Cloud Liu: loading library ...');
   require([
     'jquery-textrange.min',
