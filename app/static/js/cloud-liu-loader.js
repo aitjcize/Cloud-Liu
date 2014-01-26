@@ -21,7 +21,6 @@ function CloudLiu_UI_init() {
 }
 
 function CloudLiu_Core_init() {
-  window.db == undefined;
   var $disp = $('.cloud-liu-candidates');
   var raw = atob(db_data.value);
   var array = new Int8Array(raw.length);
@@ -29,7 +28,6 @@ function CloudLiu_Core_init() {
     array[i] = raw.charCodeAt(i);
   }
   window.db = SQL.open(array);
-  var query_str = "SELECT phrase FROM phrases WHERE m0=9 AND m1=24 ORDER BY -freq LIMIT 10;";
   array = undefined;
   $disp.text("等待輸入");
 }
