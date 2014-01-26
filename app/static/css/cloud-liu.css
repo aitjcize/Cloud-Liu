@@ -17,9 +17,9 @@
 .cloud-liu-logo {
   display: inline-block;
   float: left;
-  width: 20px;
-  height: 20px;
-  margin: 3px 3px;
+  width: 22px;
+  height: 22px;
+  margin: 0px 3px;
   border-right: #777777 2px solid;
   font-size: medium !important;
 }
@@ -28,8 +28,7 @@
   display: inline-block;
   float: left;
   width: 60px;
-  height: 20px;
-  margin: 3px 3px;
+  height: 22px;
   color: black;
   border-right: #777777 2px solid;
   font-size: medium !important;
@@ -38,12 +37,13 @@
 .cloud-liu-candidates {
   display: inline-block;
   float: left;
-  height: 20px;
-  margin: 3px 3px;
+  height: 22px;
+  margin: 0px 3px;
   font-size: medium !important;
 }
 
 .cloud-liu-candidate {
+  height: 22px;
   display: inline-block;
   font-size: medium !important;
 }

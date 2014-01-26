@@ -136,7 +136,11 @@ CloudLiu.prototype.updatePreEdit = function() {
 
 CloudLiu.prototype.updateCandidates = function() {
   this.ui.candidates.empty();
-  this.ui.candidates.append(this.candidates.map(function(v) {
-    return '<div class="cloud-liu-candidate">' + v + '</div>';
-  }));
+  if (this.candidates.length) {
+    this.ui.candidates.append(this.candidates.map(function(v) {
+      return '<div class="cloud-liu-candidate">' + v + '</div>';
+    }));
+  } else {
+    //this.ui.candidates.text("等待輸入");
+  }
 }
