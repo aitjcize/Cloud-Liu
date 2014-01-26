@@ -53,8 +53,9 @@
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li><a href="#installation">安裝</a></li>
+          <li><a href="#features">特色</a></li>
           <li><a href="#usage">使用說明</a></li>
+          <li><a href="#installation">安裝</a></li>
           <li><a href="#author">作者</a></li>
         </ul>
       </div>
@@ -66,31 +67,58 @@
       <div class="fb-like" data-href="http://cloud-liu.herokuapp.com/"
         data-layout="standard" data-action="like" data-show-faces="false"
         data-share="true"></div></h1>
-    <p>只需要瀏覽器就可以使用的嘸蝦米輸入法!</p>
-    <h2 id="installation">安裝</h2>
-    <ol>
-      <li>
-        <p>桌面: 請把這個連結拖到書籤列: <a href='javascript:(function load() {var host="{{ host }}";var s1=document.createElement("script");var c1=document.createElement("link");s1.setAttribute("src",host+"/static/js/cliu-loader.min.js");c1.setAttribute("href",host+"/static/css/cloud-liu.css");c1.setAttribute("rel","stylesheet");document.body.appendChild(s1);document.head.appendChild(c1);})();'>雲蝦米</a></p>
-      </li>
-      <li>
-        <p>iPad Safari/手機: 複製下面的程式碼貼到書籤或網址列<br />
-        <textarea rows="6" cols="80" readonly>javascript:(function load() {var host="{{ host }}";var s1=document.createElement("script");var c1=document.createElement("link");s1.setAttribute("src",host+"/static/js/cliu-loader.min.js");c1.setAttribute("href",host+"/static/css/cloud-liu.css");c1.setAttribute("rel","stylesheet");document.body.appendChild(s1);document.head.appendChild(c1);})();</textarea>
-        </p>
-      </li>
-    </ol>
 
-    <h2 id="usage">使用說明</h2>
-    <ul>
-      <li>第一次載入的時候會很慢，因為有8MB的資料要下載。不過接下來因為browser會有快取所以就會快很多了!</li>
-      <li>在任何一個頁面按下那個書籤就會載入雲蝦米，載入成功後會出現"等待輸入"字樣，接著就可以開始輸入了。</li>
-      <li>按下"嘸"字或是 Ctrl + Shift 可以切換英文輸入</li>
-    </ul>
-    <h2>測試區</h2>
-    <textarea name="name" rows="10" cols="80"></textarea>
+    <div class="row">
+      <div class="col-ng-6 col-md-6 col-sm-6 col-xs-12">
+        <h2 id="features">特色</h2>
+        <ul>
+          <li>只需要瀏覽器就可以使用的嘸蝦米輸入法!</li>
+          <li>純Javascrilit實做，不需要連server所以無通訊延遲!</li>
+          <li>雲端自動更新!</li>
+        </ul>
+      </div>
 
-    <h2 id="author">作者</h2>
-    <p><a href="http://azhuang.me">Wei-Ning Huang (AZ)</a></p>
-  </div>
+      <div class="col-ng-6 col-md-6 col-sm-6 col-xs-12">
+        <h2 id="usage">使用說明</h2>
+        <ul>
+          <li>第一次載入的時候會很慢，因為有8MB的資料要下載。不過接下來因為browser會有快取所以就會快很多了!</li>
+          <li>在任何一個頁面按下那個書籤就會載入雲蝦米，載入成功後會出現"等待輸入"字樣，接著就可以開始輸入了。</li>
+          <li>按下"嘸"字或是 <code>Ctrl + Shift</code> 可以切換英文輸入</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-ng-6 col-md-6 col-sm-6 col-xs-12">
+        <h2 id="installation">安裝</h2>
+        <ol>
+          <li>
+            <p>桌面: 請把這個連結拖到書籤列: <a href='javascript:(function load() {var host="{{ host }}";var s1=document.createElement("script");var c1=document.createElement("link");s1.setAttribute("src",host+"/static/js/cliu-loader.min.js");c1.setAttribute("href",host+"/static/css/cloud-liu.css");c1.setAttribute("rel","stylesheet");document.body.appendChild(s1);document.head.appendChild(c1);})();'>雲蝦米</a></p>
+          </li>
+          <li>
+            <p>iPad Safari/手機: 複製下面的程式碼貼到書籤或網址列<br />
+            <pre>javascript:(function load() {var host="{{ host }}";var s1=document.createElement("script");var c1=document.createElement("link");s1.setAttribute("src",host+"/static/js/cliu-loader.min.js");c1.setAttribute("href",host+"/static/css/cloud-liu.css");c1.setAttribute("rel","stylesheet");document.body.appendChild(s1);document.head.appendChild(c1);})();</pre>
+            </p>
+          </li>
+        </ol>
+      </div>
+
+      <div class="col-ng-6 col-md-6 col-sm-6 col-xs-12">
+        <h2>測試區</h2>
+        <ul>
+          <li>
+            <textarea name="name" rows="10" cols="80"></textarea>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-ng-6 col-md-6 col-sm-6 col-xs-12">
+        <h2 id="author">作者</h2>
+        <p><a href="http://azhuang.me">Wei-Ning Huang (AZ)</a></p>
+      </div>
+    </div>
 
   <script type="text/javascript" src="/static/js/jquery-1.10.2.min.js"></script>
   <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
