@@ -4,6 +4,16 @@ body {
   background: #DDECFF;
 }
 
+h1 {
+  display: inline-block;
+}
+
+.beta {
+  margin-right: 30px;
+  position: relative;
+  bottom: 15px;
+}
+
 .block {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
