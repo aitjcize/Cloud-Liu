@@ -32,37 +32,17 @@ CloudLiu.prototype.doQuery = function() {
     return;
   }
 
+  var key_map = { 188: "55", 190: "56", 219: "45", 221: "46", 222: "27" };
   var query_str = "SELECT phrase FROM phrases WHERE ";
-  for (var i = 0; i < 5; ++i) {
-    var alpha = "";
-    switch(this.keyStrokes[i]) {
-    case 190:
-      alpha = "56";
-      break;
-    case 188:
-      alpha = "55";
-      break;
-    case 222:
-      alpha = "27";
-      break;
-    case 219:
-      alpha = "45";
-      break;
-    case 221:
-      alpha = "46";
-      break;
-    default:
-      alpha = this.keyStrokes[i] - 65 + 1;
-    }
 
-    if (i < this.keyStrokes.length - 1) {
-      query_str += ["m", i, "=", alpha, " AND "].join("");
-    } else {
-      query_str += ["m", i, "=", alpha].join("");
-      break;
-    }
+  for (var i in this.keyStrokes) {
+    var ch = this.keyStrokes[i];
+    var alpha = key_map[ch]? key_map[ch]: ch - 65 + 1;
+    query_str += ["m", i, "=", alpha, " AND "].join("");
   }
-  query_str += " ORDER BY -freq LIMIT 10;";
+
+  query_str = query_str.replace(/ AND $/, "");
+  query_str += " ORDER BY mlen,-freq LIMIT 10;";
 
   this.candidates = db.exec(query_str).map(function(v) { return v[0].value; });
   this.updateCandidates();
@@ -77,6 +57,9 @@ CloudLiu.prototype.handle_Key = function(key) {
   case 32:
     return this.handle_Space();
   default:
+    if (key >= 49 && key <= 57) {
+      return this.handle_Number(key);
+    }
     if ((key >= 65 && key <= 90) || key == 190 || key == 188
         || key == 222 || key == 219 || key == 221) {
       this.handle_Default(key);
@@ -92,6 +75,23 @@ CloudLiu.prototype.handle_Backspace = function () {
     this.doQuery();
     this.updatePreEdit();
     this.updateCandidates();
+    return true;
+  }
+  return false;
+}
+
+CloudLiu.prototype.handle_Number = function (key) {
+  if (this.keyStrokes.length) {
+    var idx = key - 48;
+    if (idx < this.candidates.length) {
+      this.el.textrange('replace', this.candidates[idx]);
+      this.el.textrange('setcursor', this.el.textrange('get').end);
+      this.keyStrokes = [];
+      this.candidates = [];
+      this.updatePreEdit();
+      this.updateCandidates();
+      return true;
+    }
     return true;
   }
   return false;
@@ -125,17 +125,24 @@ CloudLiu.prototype.handle_Enter = function() {
 }
 
 CloudLiu.prototype.updatePreEdit = function() {
+  var char_map = { 188: ",", 190: ".", 219: "[", 221: "]", 222: "'" };
   this.ui.preedit.text(
       this.keyStrokes.map(function(v) {
-        return String.fromCharCode(v);
+        return char_map[v]? char_map[v]: String.fromCharCode(v);
       }).join(""));
 }
 
 CloudLiu.prototype.updateCandidates = function() {
   this.ui.candidates.empty();
   if (this.candidates.length) {
+    var idx = -1;
     this.ui.candidates.append(this.candidates.map(function(v) {
-      return '<div class="cloud-liu-candidate">' + v + '</div>';
+      if (idx++ == -1) {
+        return '<div class="cloud-liu-candidate">' + v + '</div>';
+      } else {
+        return '<div class="cloud-liu-select-num">' + idx + '</div>'
+            + '<div class="cloud-liu-candidate">' + v + '</div>';
+      }
     }));
   } else {
     //this.ui.candidates.text("等待輸入");
