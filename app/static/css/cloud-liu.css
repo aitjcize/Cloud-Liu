@@ -1,9 +1,10 @@
 .cloud-liu-outer {
-  z-index: 9999;
+  z-index: 999999;
   position: fixed !important;
   display: block;
   height: 20px;
   max-width: 270px;
+  line-height: 20px;
   top: 90%;
   left: 10%;
   border: #777777 2px solid;
