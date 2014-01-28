@@ -15,6 +15,9 @@
   <link rel="stylesheet" href="/static/css/cloud-liu.css" />
   !-->
 
+  <script type="text/javascript" src="/static/js/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/static/js/page.js"></script>
   <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -53,11 +56,12 @@
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li><a href="#features">特色</a></li>
-          <li><a href="#usage">使用說明</a></li>
-          <li><a href="#installation">安裝</a></li>
-          <li><a href="#testing">測試區</a></li>
-          <li><a href="#related">相關連結</a></li>
+          <li><a href="#features" data-ani="1">特色</a></li>
+          <li><a href="#usage" data-ani="2">使用說明</a></li>
+          <li><a href="#installation" data-ani="2">安裝</a></li>
+          <li><a href="#testing" data-ani="1">測試區</a></li>
+          <li><a href="#related" data-ani="1">相關連結</a></li>
+          <li><a href="#donate" data-ani="2">捐獻</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="http://azhuang.me" target="_blank">作者: AZ Huang</a></li>
@@ -73,9 +77,18 @@
         data-share="true"></div></h1>
 
     <div class="row">
+      <div class="col-ng-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="demo-wrap text-center pagination-centered">
+          <img class="img-responsive img-rounded" src="/static/img/demo.png">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
       <div class="col-ng-6 col-md-6 col-sm-6 col-xs-12">
         <div class="block block-1">
-          <h2 id="features">特色</h2>
+          <h2>特色</h2>
+          <span id="features" class="anchor"></span>
           <ul>
             <li>只需要瀏覽器就可以使用的嘸蝦米輸入法！</li>
             <li>純 Javascript 實做，不需要連 Server 所以沒有安全問題(洩漏打了什麼字)！</li>
@@ -87,7 +100,8 @@
 
       <div class="col-ng-6 col-md-6 col-sm-6 col-xs-12">
         <div class="block block-2">
-          <h2 id="usage">使用說明</h2>
+          <h2>使用說明</h2>
+          <span id="usage" class="anchor"></span>
           <ul>
             <li>在任何一個頁面按下書籤就會載入雲蝦米，載入成功後會出現「等待輸入」字樣，接著就可以開始輸入了。</li>
             <li>第一次載入的時候會很慢，因為有 10MB 的資料要下載。不過接下來因為browser會有快取所以就會快很多了!</li>
@@ -100,7 +114,8 @@
     <div class="row">
       <div class="col-ng-6 col-md-6 col-sm-6 col-xs-12">
         <div class="block block-2">
-          <h2 id="installation">安裝</h2>
+          <h2>安裝</h2>
+          <span id="installation" class="anchor"></span>
           <ol>
             <li>
               <p>桌面: 請把這個連結拖到書籤列: <a href='javascript:(function load() {var host="{{ host }}";var s1=document.createElement("script");var c1=document.createElement("link");s1.setAttribute("src",host+"/static/js/cliu-loader.min.js");c1.setAttribute("href",host+"/static/css/cloud-liu.css");c1.setAttribute("rel","stylesheet");document.body.appendChild(s1);document.head.appendChild(c1);})();'>雲蝦米</a></p>
@@ -116,7 +131,8 @@
 
       <div class="col-ng-6 col-md-6 col-sm-6 col-xs-12">
         <div class="block block-1">
-          <h2 id="testing">測試區</h2>
+          <h2>測試區</h2>
+          <span id="testing" class="anchor"></span>
             <textarea name="name"></textarea>
         </div>
       </div>
@@ -125,7 +141,8 @@
     <div class="row">
       <div class="col-ng-6 col-md-6 col-sm-6 col-xs-12">
         <div class="block block-1">
-          <h2 id="related">相關連結</h2>
+          <h2>相關連結</h2>
+          <span id="related" class="anchor"></span>
           <ul>
             <li><a href="http://ovff.herokuapp.com" target="_blank">嘸蝦米文翻譯機</a></li>
             <li><a href="http://azhuang.me" target="_blank">作者個人網頁</a></li>
@@ -135,7 +152,8 @@
 
       <div class="col-ng-6 col-md-6 col-sm-6 col-xs-12">
         <div class="block block-2">
-          <h2 id="donate">捐獻</h2>
+          <h2>捐獻</h2>
+          <span id="donate" class="anchor"></span>
           <p>寫程式是需要花時間精力的，如果你覺得雲蝦米好用的話，買杯咖啡給我吧!</p>
           <div class="donate-paypal">
             <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
@@ -171,8 +189,5 @@
       </div>
     </div>
   </div>
-
-  <script type="text/javascript" src="/static/js/jquery-1.10.2.min.js"></script>
-  <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
 </body>
 </html>

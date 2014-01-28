@@ -3,6 +3,7 @@ HOST = https://dl.dropboxusercontent.com/u/260733006
 
 JS = bookmarklet.js cloud-liu.js cloud-liu-loader.js
 UNEEDED_FILES = \
+		static/js/page.js \
 		static/js/require.js \
 		static/js/bookmarklet.min.js \
 		static/js/bootstrap.min.js \
@@ -11,7 +12,9 @@ UNEEDED_FILES = \
 		static/js/cloud-liu-loader.min.js \
 		static/css/bootstrap.min.css \
 		static/css/bootstrap-theme.min.css \
-		static/css/style.css
+		static/css/style.css \
+		static/img
+
 NEED_GZIP = \
 	    static/js/boshiamy.db.js \
 	    static/js/cliu-loader.min.js \
@@ -45,7 +48,7 @@ dist-uglify: dist-copy
 	cd dist/static/js; \
 	for i in $(JS); do \
 		uglifyjs $$i > $${i/.js/.min.js}; \
-		rm $$i; \
+		rm -rf $$i; \
 	done
 
 dist-tidy: dist-uglify
@@ -53,7 +56,7 @@ dist-tidy: dist-uglify
 	cat cliu-loader.pre.js require.js cloud-liu-loader.min.js cliu-loader.post.js > cliu-loader.min.js
 
 	cd dist; \
-	rm $(UNEEDED_FILES);
+	rm -rf $(UNEEDED_FILES);
 
 	#cd dist; \
 	#for i in $(NEED_GZIP); do \
