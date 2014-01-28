@@ -7,6 +7,6 @@ $(document).ready(function() {
     console.log('here')
     setTimeout(function() {
       $target.removeClass("block-" + $el.data("ani") + "-do-blink");
-    }, 2500);
+    }, 3000);
   });
 });

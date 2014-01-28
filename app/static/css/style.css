@@ -61,16 +61,16 @@ h1 {
 
 .block-1-do-blink {
   animation-name: block-1-blink;
-  animation-duration: 2s;
+  animation-duration: 2.5s;
   animation-timing-function: linear;
-  animation-delay: 0s;
+  animation-delay: 0.2s;
   animation-iteration-count: 1;
   animation-play-state: running;
 
   -webkit-animation-name: block-1-blink;
-  -webkit-animation-duration: 2s;
+  -webkit-animation-duration: 2.5s;
   -webkit-animation-timing-function: linear;
-  -webkit-animation-delay: 0s;
+  -webkit-animation-delay: 0.2s;
   -webkit-animation-iteration-count: 1;
   -webkit-animation-play-state: running;
 }
@@ -82,16 +82,16 @@ h1 {
 
 .block-2-do-blink {
   animation-name: block-2-blink;
-  animation-duration: 2s;
+  animation-duration: 2.5s;
   animation-timing-function: linear;
-  animation-delay: 0s;
+  animation-delay: 0.2s;
   animation-iteration-count: 1;
   animation-play-state: running;
 
   -webkit-animation-name: block-2-blink;
-  -webkit-animation-duration: 2s;
+  -webkit-animation-duration: 2.5s;
   -webkit-animation-timing-function: linear;
-  -webkit-animation-delay: 0s;
+  -webkit-animation-delay: 0.2s;
   -webkit-animation-iteration-count: 1;
   -webkit-animation-play-state: running;
 }
