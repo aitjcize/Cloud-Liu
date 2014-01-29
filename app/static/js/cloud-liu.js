@@ -59,6 +59,8 @@ CloudLiu.prototype.handle_Key = function(key) {
     return this.handle_Backspace();
   case 13:
     return this.handle_Enter();
+  case 27:
+    return this.handle_Escape();
   case 32:
     return this.handle_Space();
   default:
@@ -127,6 +129,18 @@ CloudLiu.prototype.handle_Space = function () {
 
 CloudLiu.prototype.handle_Enter = function() {
   return this.handle_Space();
+}
+
+
+CloudLiu.prototype.handle_Escape = function() {
+  if (this.keyStrokes.length) {
+    this.keyStrokes = [];
+    this.candidates= [];
+    this.updatePreEdit();
+    this.updateCandidates();
+    return true;
+  }
+  return false;
 }
 
 CloudLiu.prototype.updatePreEdit = function() {
