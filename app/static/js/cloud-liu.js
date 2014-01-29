@@ -24,6 +24,11 @@ function CloudLiu(el) {
       }
     }
   });
+
+  this.el.on('focusin', function() {
+    liu.updatePreEdit();
+    liu.updateCandidates();
+  });
 }
 
 CloudLiu.prototype.doQuery = function() {
