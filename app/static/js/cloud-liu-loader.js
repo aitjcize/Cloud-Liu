@@ -63,7 +63,7 @@ requirejs.config({
   waitSeconds: 120
 });
 
-require(['jquery-1.10.2.min'], function() {
+function main() {
   if (typeof window.cliu_enabled != "undefined") {
     console.log('Cloud Liu: Areadly loaded, abort.');
     return;
@@ -108,4 +108,10 @@ require(['jquery-1.10.2.min'], function() {
       CloudLiu_Core_register();
     });
   });
-});
+}
+
+if (typeof window.jQuery == "undefined") {
+  require(['jquery-1.10.2.min'], main);
+} else {
+  main();
+}
