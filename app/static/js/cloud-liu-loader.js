@@ -64,6 +64,8 @@ requirejs.config({
 });
 
 function main() {
+  window.$ = jQuery;
+
   if (typeof window.cliu_enabled != "undefined") {
     console.log('Cloud Liu: Areadly loaded, abort.');
     return;
