@@ -1,5 +1,4 @@
-#HOST = https://s3-ap-northeast-1.amazonaws.com/cloudliu
-HOST = https://dl.dropboxusercontent.com/u/260733006
+HOST = https://aitjcize.github.io/Cloud-Liu/
 
 JS = bookmarklet.js cloud-liu.js cloud-liu-loader.js
 UNEEDED_FILES = \
