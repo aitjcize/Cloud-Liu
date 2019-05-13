@@ -1,0 +1,120 @@
+@keyframes block-1-blink {
+  0%    { background: #FFDF8C; }
+  100%  { background: #faf8f0; }
+}
+
+@-webkit-keyframes block-1-blink {
+  0%    { background: #FFDF8C; }
+  100%  { background: #faf8f0; }
+}
+
+@keyframes block-2-blink {
+  0%    { background: #7FD880; }
+  100%  { background: #dff0d8; }
+}
+
+@-webkit-keyframes block-2-blink {
+  0%    { background: #7FD880; }
+  100%  { background: #dff0d8; }
+}
+
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+  background: #DDECFF;
+}
+
+h1 {
+  display: inline-block;
+}
+
+.anchor {
+  position: absolute;
+  top: -60px;
+}
+
+.beta {
+  margin-right: 30px;
+  position: relative;
+  bottom: 15px;
+}
+
+.demo-wrap {
+  text-align: center;
+  width: 100%;
+}
+
+.demo-wrap > img {
+  display: inline-block;
+  border: 1px solid #000000;
+  margin-bottom: 20px;
+}
+
+.block {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+
+  margin-bottom: 10px;
+  padding: 0px 10px 0px 10px;
+}
+
+.block-1-do-blink {
+  animation-name: block-1-blink;
+  animation-duration: 2.5s;
+  animation-timing-function: linear;
+  animation-delay: 0.2s;
+  animation-iteration-count: 1;
+  animation-play-state: running;
+
+  -webkit-animation-name: block-1-blink;
+  -webkit-animation-duration: 2.5s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-delay: 0.2s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-play-state: running;
+}
+
+.block-1 {
+  background: #faf8f0;
+  border: 1px solid #8a6d3b;
+}
+
+.block-2-do-blink {
+  animation-name: block-2-blink;
+  animation-duration: 2.5s;
+  animation-timing-function: linear;
+  animation-delay: 0.2s;
+  animation-iteration-count: 1;
+  animation-play-state: running;
+
+  -webkit-animation-name: block-2-blink;
+  -webkit-animation-duration: 2.5s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-delay: 0.2s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-play-state: running;
+}
+
+.block-2 {
+  animation-name: block-2-blink;
+  background: #dff0d8;
+  border: 1px solid #468847;
+}
+
+textarea {
+  width: 100%;
+  height: 210px;
+  margin-bottom: 10px;
+}
+
+.donate-paypal {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.donate-bitcoin {
+  display: inline-block;
+  position: relative;
+  bottom: 30px;
+}
